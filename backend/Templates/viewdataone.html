@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student data</h1>
+    <table border="1">
+       
+        <tr>
+                <th>{{Id}}</th>
+                <th>{{Name}}</th>
+                <th>{{Age}}</th>
+                <th>{{Roll_number}}</th>
+                <th>{{Place}}</th>
+                <th>{{Email}}</th>
+
+
+        </tr>
+        
+        <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.age}}</td>
+                <td>{{data.roll_no}}</td>
+                <td>{{data.place}}</td>
+                <td>{{data.email_id}}</td>
+                
+            
+        </tr>
+        
+    </table><br>
+    <button><a style="text-decoration:none;color: black;" href="/student/download_single_data/{{data.id}}/">Download in csv</a></button>
+
+</body>
+</html>

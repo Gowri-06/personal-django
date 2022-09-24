@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="." method="post">
+    {% csrf_token %}
+    <label>name</label>
+    <input type="text" name="name"><br><br>
+    <label>age</label>
+    <input type="text" name="age"><br><br>
+    <label>roll_no</label>
+    <input type="text" name="roll_no"><br><br>
+    <label>place</label>
+    <input type="text" name="place"><br><br>
+    <label>email_id</label>
+    <input type="text" name="email_id"><br><br>
+    <input  type="submit" value="submit">
+    </form>
+</body>
+</html>

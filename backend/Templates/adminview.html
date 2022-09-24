@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student data range order wise</h1>
+    <form action="/student/weekview/" method="post">
+    
+    <div style="margin-left: 100px;">
+
+    <h3>Choose date</h3>
+    {% csrf_token %}
+    <input type="date" name="date1" id="" value="">
+    <input style="margin-left: 50px;" type="date" name="date2" id="" value="">
+    <input style="margin-left: 30px;"  type="submit">
+    <div style="margin-left: 400px;margin-top: -80px;">
+    <h3>week count</h3>
+    <input size="2" type="text" value={{week_count}}>
+    </div>
+    </div>
+    </form>
+     <br/><br/>
+    <!-- <button><a style="text-decoration:none;color: black;" href="/student/download_data">Download in csv</a></button> -->
+
+    <table border="1">
+       
+        <tr>
+            
+                <th>{{Id}}</th>
+                <th>{{Name}}</th>
+                <th>{{Age}}</th>
+                <th>{{Roll_number}}</th>
+                <th>{{Place}}</th>
+                <th>{{Email}}</th>
+                <th>{{Date}}</th>
+                
+                      
+
+        </tr>
+        {% for i in data_1 %}
+        <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.roll_no}}</td>
+                <td>{{i.place}}</td>
+                <td>{{i.email_id}}</td>
+                <td>{{i.created_at}}</td>
+                <!-- <td><a href="/student/update/{{ i.id }}/">Edit</a></td>
+                <td><a href="/student/viewpageone/{{i.id}}/">View</a></td>
+                <td><a href="/student/delete/{{ i.id }}/">Delete</a></td> -->
+            
+        </tr>
+        {% endfor %}
+    </table><br>
+    <h1>Student data month order wise</h1>
+    <form action="/student/yearview/" method="post">
+    
+    <div style="margin-left: 100px;">
+
+    <h3>Choose date</h3>
+    {% csrf_token %}
+    <input type="date" name="month" id="" value="">
+    <input style="margin-left: 25px;"  type="submit">
+    <div style="margin-left: 300px;margin-top: -80px;">
+    <h3>Previous month count</h3>
+    <input size="2" type="text" value="{{month_count}}">
+    </div>
+    </div>
+    </form>
+     <br/><br/>
+    <table border="1">
+       
+        <tr>
+            
+                <th>{{Id}}</th>
+                <th>{{Name}}</th>
+                <th>{{Age}}</th>
+                <th>{{Roll_number}}</th>
+                <th>{{Place}}</th>
+                <th>{{Email}}</th>
+                <th>{{Date}}</th>
+                
+                      
+
+        </tr>
+        {% for i in data_2 %}
+        <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.roll_no}}</td>
+                <td>{{i.place}}</td>
+                <td>{{i.email_id}}</td>
+                <td>{{i.created_at}}</td>
+                <!-- <td><a href="/student/update/{{ i.id }}/">Edit</a></td>
+                <td><a href="/student/viewpageone/{{i.id}}/">View</a></td>
+                <td><a href="/student/delete/{{ i.id }}/">Delete</a></td> -->
+            
+        </tr>
+        {% endfor %}
+    </table><br>
+    <h1>Student data day order wise</h1>
+    <form action="/student/dateview/" method="post">
+    
+    <div style="margin-left: 100px;">
+
+    <h3>Choose date</h3>
+    {% csrf_token %}
+    <input type="date" name="today_date" id="" value="">
+    <input style="margin-left: 25px;"  type="submit">
+    <div style="margin-left: 290px;margin-top: -80px;">
+    <h3>Day count</h3>
+    <input size="2" type="text" value={{day_count}}>
+    </div>
+    </div>
+    </form><br><br>
+    
+    
+     <br/><br/>
+    <table border="1">
+       
+        <tr>
+            
+                <th>{{Id}}</th>
+                <th>{{Name}}</th>
+                <th>{{Age}}</th>
+                <th>{{Roll_number}}</th>
+                <th>{{Place}}</th>
+                <th>{{Email}}</th>
+                <th>{{Date}}</th>
+                
+                      
+
+        </tr>
+        {% for i in data_3 %}
+        <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.roll_no}}</td>
+                <td>{{i.place}}</td>
+                <td>{{i.email_id}}</td>
+                <td>{{i.created_at}}</td>
+                <!-- <td><a href="/student/update/{{ i.id }}/">Edit</a></td>
+                <td><a href="/student/viewpageone/{{i.id}}/">View</a></td>
+                <td><a href="/student/delete/{{ i.id }}/">Delete</a></td> -->
+            
+        </tr>
+        {% endfor %}
+    </table><br>
+     
+</body>
+</html>
