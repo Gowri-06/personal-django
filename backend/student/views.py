@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 import csv
 # from backend import student
 from .models import *
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 from django.template import loader
 from django.urls import reverse
 from datetime import date,timedelta, datetime
@@ -93,6 +95,9 @@ def updaterecord(request,id):
     update_student_data.save()
     return HttpResponseRedirect(reverse('viewpage'))
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def download_data(request):
     download = Student.objects.all().values()
     filename = "data.csv"
@@ -126,6 +131,10 @@ def download_single_data(request,id):
     writer.writerows(var1)
     return HttpResponse("csv file stored successfully")
 
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def adminview(request):
   
     choose_date = request.POST.get("date")
