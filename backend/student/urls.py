@@ -14,5 +14,7 @@ urlpatterns =[
     path("adminview/",adminview, name="adminview"),
     path("dateview/",dateview, name="dateview"),
     path("weekview/",weekview, name="weekview"),
-    path("yearview/",yearview, name="yearview")
+    path("yearview/",yearview, name="yearview"),
+    path("",loginpage, name="loginpage"),
+    path("adminanduser/",adminanduser, name="adminanduser"),
     ]    

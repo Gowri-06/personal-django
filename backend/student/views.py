@@ -303,11 +303,29 @@ def weekview(request):
 
     }
     return HttpResponse(template.render(context, request))
-    # return HttpResponse("oerefefef")
-
     
 
+def loginpage(request):
 
+  
+    
+    template = loader.get_template('loginpage.html')
+    context = {
+       
+
+    }
+    return HttpResponse(template.render(context,request))
+
+def adminanduser(request):
+        
+    template = loader.get_template('adminanduser.html')
+    context = {
+       
+      
+        
+
+    }
+    return HttpResponse(template.render(context,request))
 
 
 
