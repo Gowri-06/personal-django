@@ -3,13 +3,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import csv
 # from backend import student
-from .models import *
+from . models import *
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from django.template import loader
 from django.urls import reverse
 from datetime import date,timedelta, datetime
 import pyautogui
+
 def shown(request):
     return render(request, "show.html")
 
@@ -97,11 +98,11 @@ def updaterecord(request,id):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def download_data(request):
     download = Student.objects.all().values()
     filename = "data.csv"
-    fields = ["id","name","age","roll_no","place","email_id"]
+    fields = ["id","name","age","roll_no","place","email_id","created_at","updated_at"]
     csv_file = open(filename, "w", newline='')
     writer = csv.DictWriter(csv_file,fieldnames=fields)
     writer.writeheader()
@@ -134,7 +135,7 @@ def download_single_data(request,id):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def adminview(request):
   
     choose_date = request.POST.get("date")
