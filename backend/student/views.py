@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from django.template import loader
 from django.urls import reverse
-from datetime import date,timedelta, datetime
+from datetime import date,timedelta, datetime 
 import pyautogui
 
 def shown(request):
@@ -21,7 +21,7 @@ def addpage(request):
        name = request.POST.get("name") 
        age = request.POST.get("age")  
        roll_no = request.POST.get("roll_no")  
-       place = request.POST.get("place")  
+       place = request.POST.get("place")                                                                     
        email_id = request.POST.get("email_id") 
        a = Student(name=name,age=age,roll_no=roll_no,place=place,email_id=email_id).save()
        print((a))
@@ -82,18 +82,22 @@ def updaterecord(request,id):
     update_data = Student.objects.get(id=id)
     print(update_data)
     name =request.POST['name'] 
+    print("name>>>>>>>>>>.",name)
     age = request.POST['age']  
     roll_no = request.POST['roll_no']  
     place = request.POST['place'] 
     email_id = request.POST['email_id']
-    update_student_data = Student.objects.filter(id=id)
+    # update_student_data = Student.objects.filter(id=id)
 
-    update_student_data(name=name,age=age)
-    update_student_data.age = age 
-    update_student_data.roll_no = roll_no  
-    update_student_data.place = place  
-    update_student_data.email_id = email_id 
-    update_student_data.save()
+    # update_student_data(name=name,age=age)
+    update_data.name = name 
+    update_data.age = age 
+    update_data.roll_no = roll_no  
+    update_data.place = place  
+    update_data.email_id = email_id 
+    update_data.save()
+    update_data = Student.objects.get(id=id)
+    print("upfdddddddddddd",update_data.name)
     return HttpResponseRedirect(reverse('viewpage'))
 
 

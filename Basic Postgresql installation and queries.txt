@@ -1,0 +1,78 @@
+-- Active: 1682402711764@@127.0.0.1@5432@student@public
+
+
+-- CREATE TABLE STUDENT_COPY(name VARCHAR(50),age INTEGER, roll_no INTEGER,place VARCHAR(50),  email TEXT);
+
+ALTER TABLE STUDENT_COPY
+ADD COLUMN STUDENT_ID INTEGER;
+
+-- ALTER TABLE STUDENT_DETAILS
+-- ADD COLUMN PAN_NO INTEGER;
+-- ALTER TABLE STUDENT_DETAILS
+-- DROP COLUMN PAN_NO;
+
+1.CREATE DATABASE_NAME;
+  It will create database
+
+2.SELECT * FROM STUDENT_DETAILS;
+  It will display all records from student database 
+
+SELECT * FROM STUDENT_COPY;
+  It will display all records from student database 
+
+3.INSERT INTO STUDENT_COPY(name,age,roll_no,place,email,student_id) 
+VALUES ('god6',100,1234,'U.k','god6@gmail.com',6); 
+  It will insert datas in to database i.e a post method
+
+4.-- UPDATE STUDENT_DETAILS
+-- SET email = 'godname@gmail.com'
+-- WHERE student_id = 1
+-- UPDATE STUDENT_DETAILS
+-- SET student_id = 4
+-- WHERE place =  'singapore'
+  it will update record based on column and its column value we give i.e SET on above query and WHERE clause is used to search for the column and column value we given from that it will update the record on our table   
+
+
+
+-- DELETE FROM STUDENT_DETAILS WHERE name = 'god5';
+
+-- SELECT current_database();
+
+-- SELECT datname FROM pg_database;
+
+-- INSERT INTO STUDENT_DETAILS (name, age) VALUES ('value1', 2 );
+
+-- SELECT * FROM STUDENT_DETAILS JOIN STUDENT_COPY ON STUDENT_DETAILS.student_id = STUDENT_COPY.student_id;
+
+SELECT student_id, COUNT(*) FROM STUDENT_DETAILS GROUP BY student_id;
+
+SELECT student_id, COUNT(*) FROM STUDENT_DETAILS GROUP BY student_id HAVING COUNT(*) > 1;
+
+SELECT DISTINCT student_id FROM STUDENT_DETAILS;
+
+SELECT * FROM STUDENT_DETAILS LIMIT 6;
+
+SELECT * FROM STUDENT_DETAILS LIMIT 8 OFFSET 7;
+
+
+SELECT * FROM STUDENT_DETAILS ORDER BY student_id ASC;
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'student',
+        'USER': 'postgres',
+        'PASSWORD': 'gowri',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+
+
+
+
+
