@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+</head>
+<body>
+    <!-- {% include "include.html" with me="ALEXANDER" sponsor="W3SCHOOLS" %} -->
+    
+    {% with variable1="value1" variable2="value2" %}
+    <p>{{ variable1 }}</p>
+    <p>{{ variable2 }}</p>
+  {% endwith %}
+  
+    {% regroup cars by brand as newlist %}
+
+{{ newlist }}
+
+{% for x in newlist %}
+  <h1>{{ x.grouper }}</h1>
+  {% for y in x.list %}
+    <p>{{ y.model }}: {{ y.year }}</p>
+  {% endfor %}
+{% endfor %}
+    <h1 id="name">Master template</h1>
+    <h1>{% firstof x y z %}</h1>
+
+    {% block userinfo %}
+    <h2>Not registered yet</h2>
+    {% endblock %} 
+
+</body>
+</html>

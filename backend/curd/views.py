@@ -12,3 +12,5 @@ def test(request):
         return HttpResponse(a)
     else:
         return render(request,"folder/index.html")
+import sys
+print(sys.path)

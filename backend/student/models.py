@@ -10,7 +10,12 @@ class Student(models.Model):
     place = models.TextField(null=False)
     email_id = models.EmailField(null=False)
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=timezone.now) 
+    updated_at = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(default="",null=False)
+    image = models.FileField(upload_to="pictures/",null=True,blank=True)
+
+
+
 
     # created_by = models.DateTimeField(default=timezone.now)
     # modified_by = models.DateTimeField(default=timezone.now)

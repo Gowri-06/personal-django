@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
 </head>
 <body>
     <h1>Student data</h1>
     <button><a style="text-decoration:none;color: black;" href="/student/download_data">Download in csv</a></button>
-
+    <!-- {% for images in image.all %}
+    <img src="{{images.image.url}}" style="height: 300px;width: 300px;">
+    {% endfor %} -->
     <table border="1">
        
         <tr>
             
                 <th>{{Id}}</th>
+                <th>Image</th>
                 <th>{{Name}}</th>
                 <th>{{Age}}</th>
                 <th>{{Roll_number}}</th>
                 <th>{{Place}}</th>
                 <th>{{Email}}</th>
+                <!-- <th>Slug</th> -->
+                <th  id="ed">Edit</th>
+                <th  id="vi">View</th>
+                <th  id="de">Delete</th>
+
                 
                       
 
@@ -27,11 +38,13 @@
         {% for i in data %}
         <tr>
                 <td>{{i.id}}</td>
+                <td><img src="../media/{{i.image}}" style="height: 50px; width: 50px;border-radius: 50%;"></td>
                 <td>{{i.name}}</td>
                 <td>{{i.age}}</td>
                 <td>{{i.roll_no}}</td>
                 <td>{{i.place}}</td>
                 <td>{{i.email_id}}</td>
+                <!-- <td>{{i.slug}}</td> -->
                 <td><a href="/student/update/{{ i.id }}/">Edit</a></td>
                 <td><a href="/student/viewpageone/{{i.id}}/">View</a></td>
                 <td><a href="/student/delete/{{ i.id }}/">Delete</a></td>

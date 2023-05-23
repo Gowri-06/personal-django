@@ -10,7 +10,51 @@ from django.template import loader
 from django.urls import reverse
 from datetime import date,timedelta, datetime 
 import pyautogui
+from datetime import time
+from student.forms import Imageform
 
+def testone(request):
+    template = loader.get_template("test.html")
+    data = Student.objects.all().values()
+    print(">>>>>>>>",data)
+    mydata = Student.objects.filter(name__endswith='kar').values()
+    print("$$$$$$$",mydata)
+
+    # context = {
+    # 'x': '',
+    # 'y': '',
+    # 'z': 'BMW',
+    # }
+    context = {
+    'cars': [
+      {
+        'brand': 'Ford',
+        'model': 'Mustang',
+        'year': '1964',
+      },
+      {
+        'brand': 'Ford',
+        'model': 'Bronco',
+        'year': '1970',
+      },
+      {
+        'brand': 'Ford',
+        'model': 'Sierra',
+        'year': '1981',
+      },
+      {
+        'brand': 'Volvo',
+        'model': 'XC90',
+        'year': '2016',
+      },
+      {
+        'brand': 'Volvo',
+        'model': 'P1800',
+        'year': '1964',
+      }]
+    }
+    return HttpResponse(template.render(context,request))
+   
 def shown(request):
     return render(request, "show.html")
 
@@ -23,8 +67,33 @@ def addpage(request):
        roll_no = request.POST.get("roll_no")  
        place = request.POST.get("place")                                                                     
        email_id = request.POST.get("email_id") 
-       a = Student(name=name,age=age,roll_no=roll_no,place=place,email_id=email_id).save()
+       image_file = request.FILES['image']
+       print("image_file",image_file)
+       print(">>>>>>>>>>>>>>hhh",name,age,roll_no,place,email_id)
+       a = Student(name=name,age=age,roll_no=roll_no,place=place,email_id=email_id,image=image_file).save()
        print((a))
+    #    form = Imageform(request.POST,request.FILES)
+    #    if form.is_valid():
+    #     mymodel = form.save()
+    #     print("saveeeee")
+        # mymodel.user = request.user # Set user field to the current user
+        # mymodel.save()
+        # return render(request, 'success.html')
+
+        # print("form",form)
+    #    if form.is_valid():
+    #     form.save()
+    #    image = Image.objects
+        # return redirect('/')
+    #    else:
+    #     form = Imageform() 
+        #   
+    # context = {
+    #     'form':form,
+    #     'image':image
+    # }         
+    # return render(request,'index.html',context)
+       
     #    return HttpResponse("save_data")
        return HttpResponseRedirect(reverse('shown'))
     else:
@@ -32,7 +101,7 @@ def addpage(request):
 
 def viewpage(request):
     data =Student.objects.all().values().order_by('-created_at')
-    print(data)
+    print("^^^^^^^^^^^^^^",data)
     template = loader.get_template('viewdata.html')
     context = {
         "data":data,
@@ -44,6 +113,7 @@ def viewpage(request):
         "Email":"Email"
 
     }
+  
     return HttpResponse(template.render(context, request))
     # return HttpResponse("db_data")
 def delete(request,id):
@@ -55,7 +125,10 @@ def delete(request,id):
     
 def viewpageone(request,id):
     data =Student.objects.get(id=id)
-    print(data)
+    # data =Student.objects.get(slug=slug)
+    # data1 =Student.objects.filter(slug=slug).values()
+    # print("data1",data1)
+    # print("ty>>>>>>>",type(slug))
     template = loader.get_template('viewdataone.html')
     context = {
         "data":data,
@@ -151,6 +224,7 @@ def adminview(request):
     print(type(today))
     present_day = datetime.now()
     print(type(present_day))
+    print("<<<<>>>>",present_day)
     thirty_days_ago = present_day - timedelta(days=30)
     print("thirty_days_ago",type(thirty_days_ago))
     yesterday = present_day - timedelta(6)
@@ -167,10 +241,38 @@ def adminview(request):
     # Sample.objects.filter(date__range=["2011-01-01", "2011-01-31"])
     data_1_week = Student.objects.filter(created_at__range=[yesterday,present_day])
     print(data_1_week)
-    data_2_month = Student.objects.filter(created_at__year=this_year, created_at__month=this_month)
-    print(data_2_month)
+    data_2_month = Student.objects.filter(created_at__year=this_year, created_at__month=this_month).values()
+    print("data_2_month",data_2_month)
     data_3_day = Student.objects.filter(created_at__date=d1)
     print(data_3_day)
+    # CCC = datetime.now().day
+    # print("hiii",CCC)
+    data_4_day = Student.objects.filter(created_at__day=datetime.now().day).values()
+    print("^^^^^^^^cap",data_4_day)
+    # a = Student.objects.filter(name__isnull=True).values()
+    # print("valueaaaa>>>",a)
+    # objects = Student.objects.filter(created_at__quarter=2)
+    # print("objects",objects)
+    # objects = Student.objects.filter(name__regex=r'ram')
+    # print("objects",objects)
+    # objects = Student.objects.filter(created_at__second=46).values()
+    # print("objects",objects)
+    # objects = Student.objects.filter(created_at__minute=10).values()
+    # print("objects",objects)
+    # objects = Student.objects.filter(created_at__hour=17).values()
+    # print("objects",objects)
+    # Get all MyModel objects where the time in the datetime_field is 9:30 AM.
+    objects = Student.objects.filter(created_at__time='17:55:53').values()
+    print("objects",objects)
+
+
+
+
+
+
+
+
+
     
     template = loader.get_template('adminview.html')
     context = {
@@ -200,6 +302,7 @@ def yearview(request):
     print("list_box_split",list_box_split)
     present_day = datetime.now()
     print(type(present_day))
+    print("present_day",present_day)
      
     datetime_str = '09/19/18 13:55:26'
     datetime_object = datetime.strptime(choose_month, '%Y-%m-%d').date()

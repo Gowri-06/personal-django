@@ -1,4 +1,15 @@
 #first{
 background-color: pink;
-
+}
+#ed{
+color: rgba(0, 128, 0, 0.856);
+}
+#vi{
+    color: rgba(255, 166, 0, 0.815);
+}
+#de{
+    color: rgba(255, 0, 0, 0.685);
+}
+#name{
+    color: pink;
 }
